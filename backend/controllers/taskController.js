@@ -141,10 +141,32 @@ const deleteTask = async (req, res) => {
   }
 };
 
+const createTasksBulk = async (req, res) => {
+  if (!Array.isArray(req.body)) {
+    return res.status(400).json({ message: "Expected an array of tasks" });
+  }
+
+  const tasks = req.body.map(task => {
+    if (!task.title) {
+      throw new Error("Each task must have a title");
+    }
+
+    return {
+      ...task,
+      user: req.user._id
+    };
+  });
+
+  const createdTasks = await Task.insertMany(tasks);
+  res.status(201).json(createdTasks);
+};
+
+
 module.exports = {
   createTask,
   getTasks,
   getTaskById,
   updateTask,
   deleteTask,
+  createTasksBulk,
 };

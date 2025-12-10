@@ -388,6 +388,20 @@ Server starts at:
 http://localhost:5000
 ```
 
+
+
+## 👥 Developer
+
+<table align="center">
+  <tr>
+    <td align="center">
+      <img src="https://github.com/Satyaamp.png" width="100"><br>
+      <strong>Satyam Kumar</strong><br>
+      <a href="https://github.com/Satyaamp">@Satyaamp</a>
+    </td>
+  </tr>
+</table>
+
 ---
 
 <div align="center">
@@ -396,3 +410,4 @@ http://localhost:5000
 
 </div>
 
+---
