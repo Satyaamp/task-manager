@@ -52,10 +52,9 @@ Build a **robust backend API** with:
 
 ## 🏗 Backend Architecture
 
-![Backend Structure](screenshots\backendstructure.png)
+![Backend Structure](screenshots/backendstructure.png)
 
 *Clean and modular backend folder structure following separation of concerns.*
-
 ---
 
 ## 🗄 Database Design
@@ -89,14 +88,14 @@ Authentication is implemented using **JWT**, despite being optional.
 - Protected APIs  
 
 ### 🔑 Auth Endpoints
-![🔑 Auth Endpoints](screenshots\AuthEndpoints.png)
+![🔑 Auth Endpoints](screenshots/AuthEndpoints.png)
 
 ---
 
 ## 📌 Task APIs (CRUD)
 
 ### ✅ Endpoints
-![📌 Task APIs (CRUD)](screenshots\taskendpoints.png)
+![📌 Task APIs (CRUD)](screenshots/taskendpoints.png)
 
 ✅ All routes are JWT protected  
 ✅ Users can access only their own tasks  
