@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - Task Manager</title>
+  <link rel="icon" type="image/png" href="assets/icons/dashboard.png">
+  <link rel="shortcut icon" type="image/png" href="assets/icons/dashboard.png">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/components.css">
+
+  <style>
+    /* Dashboard Custom Enhancements */
+
+    .hero {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .hero h1 {
+      font-size: 32px;
+      font-weight: 700;
+    }
+    .hero p {
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .stats-grid {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .stat-card-big {
+      flex: 1;
+      min-width: 250px;
+      padding: 24px;
+      text-align: center;
+      border-radius: 16px;
+    }
+
+    /* Circular Progress */
+    .circle-wrapper {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    .circle-progress {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: conic-gradient(var(--accent) calc(var(--p)*1%), rgba(255,255,255,0.15) 0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .circle-progress span {
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .actions-row-center {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 20px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+<header class="topbar glass">
+  <div class="brand-small">TaskManager</div>
+  <nav>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="tasks.html">Tasks</a>
+    <button id="logoutBtn" class="btn ghost">Logout</button>
+  </nav>
+</header>
+
+<main class="container">
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Welcome Back 👋</h1>
+    <p>Your productivity overview at a glance</p>
+  </section>
+
+  <!-- Stats Cards -->
+  <section class="stats-grid">
+
+    <div class="stat-card-big glass">
+      <h3>Total Tasks</h3>
+      <p id="totalTasks" style="font-size: 32px; font-weight: 700;">--</p>
+    </div>
+
+    <div class="stat-card-big glass">
+      <h3>Completed</h3>
+      <p id="completedTasks" style="font-size: 32px; font-weight: 700;">--</p>
+    </div>
+
+    <div class="stat-card-big glass">
+      <h3>Pending</h3>
+      <p id="pendingTasks" style="font-size: 32px; font-weight: 700;">--</p>
+    </div>
+
+  </section>
+
+  <!-- Circular Progress -->
+  <div class="circle-wrapper">
+    <div id="progressCircle" class="circle-progress" style="--p:0;">
+      <span id="progressPercent">0%</span>
+    </div>
+  </div>
+
+  <!-- Actions -->
+  <div class="actions-row-center">
+    <a class="btn primary" href="add-task.html">Add Task</a>
+    <a class="btn ghost" href="tasks.html">View Tasks</a>
+  </div>
+
+</main>
+
+<script src="js/utils.js"></script>
+<script src="js/api.js"></script>
+<script src="js/tasks.js"></script>
+
+<script>
+  ensureAuth();
+  document.getElementById("logoutBtn").onclick = logout;
+
+  async function updateDashboard() {
+    const tasks = await get("/tasks");
+
+    const total = tasks.length;
+    const completed = tasks.filter(t => t.status === "completed").length;
+    const pending = tasks.filter(t => t.status !== "completed").length;
+
+    document.getElementById("totalTasks").textContent = total;
+    document.getElementById("completedTasks").textContent = completed;
+    document.getElementById("pendingTasks").textContent = pending;
+
+    // Progress Percentage
+    const percent = total === 0 ? 0 : Math.round((completed / total) * 100);
+    document.getElementById("progressCircle").style.setProperty("--p", percent);
+    document.getElementById("progressPercent").textContent = percent + "%";
+  }
+
+  updateDashboard();
+  registerSW();
+</script>
+
+</body>
+</html>

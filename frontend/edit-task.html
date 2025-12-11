@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Task - Task Manager</title>
+  <link rel="icon" type="image/png" href="assets/icons/edit.png">
+  <link rel="shortcut icon" type="image/png" href="assets/icons/edit.png">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/components.css">
+</head>
+
+<body>
+
+<header class="topbar glass">
+  <div class="brand-small">TaskManager</div>
+  <nav>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="tasks.html">Tasks</a>
+    <button id="logoutBtn" class="btn ghost">Logout</button>
+  </nav>
+</header>
+
+<main class="container center-col">
+
+  <section class="auth-card glass">
+    <h2>Edit Task</h2>
+
+    <form id="editTaskForm" class="form">
+      <input type="hidden" id="taskId">
+
+      <div class="form-row">
+        <label>Title</label>
+        <input id="title" required>
+      </div>
+
+      <div class="form-row">
+        <label>Description</label>
+        <textarea id="description"></textarea>
+      </div>
+
+      <div class="form-row">
+        <label>Priority</label>
+        <select id="priority">
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label>Status</label>
+        <select id="status">
+          <option value="pending">Pending</option>
+          <option value="in-progress">In Progress</option>
+          <option value="completed">Completed</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label>Due Date</label>
+        <input type="date" id="dueDate">
+      </div>
+
+      <button class="btn primary">Save Changes</button>
+
+      <div id="editTaskError" class="error" style="display:none"></div>
+    </form>
+  </section>
+
+</main>
+
+<script src="js/utils.js"></script>
+<script src="js/api.js"></script>
+<script src="js/tasks.js"></script>
+<script>
+  ensureAuth();
+  document.getElementById("logoutBtn").onclick = logout;
+  loadTaskToEdit();
+
+  document.getElementById("editTaskForm").onsubmit = async (e) => {
+    e.preventDefault();
+    await submitTaskEditForm();
+  };
+
+  registerSW();
+</script>
+
+</body>
+</html>

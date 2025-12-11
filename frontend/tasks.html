@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tasks - Task Manager</title>
+  <link rel="icon" type="image/png" href="assets/icons/task.png">
+  <link rel="shortcut icon" type="image/png" href="assets/icons/task.png">
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/components.css">
+</head>
+
+<body>
+
+<header class="topbar glass">
+  <div class="brand-small">TaskManager</div>
+  <nav>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="tasks.html">Tasks</a>
+    <button id="logoutBtn" class="btn ghost">Logout</button>
+  </nav>
+</header>
+
+<main class="container">
+
+  <section class="list-header">
+    <h2>Your Tasks</h2>
+    <a href="add-task.html" class="btn primary">Add Task</a>
+  </section>
+
+
+  <section id="tasksContainer" class="cards-grid"></section>
+
+  <!-- Delete modal -->
+  <div id="deleteModal" class="modal" aria-hidden="true">
+    <div class="modal-content glass">
+      <h3>Delete Task?</h3>
+      <p>Are you sure you want to delete this task?</p>
+
+      <div class="modal-actions">
+        <button id="confirmDeleteBtn" class="btn danger">Delete</button>
+        <button id="cancelDeleteBtn" class="btn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script src="js/utils.js"></script>
+<script src="js/api.js"></script>
+<script src="js/tasks.js"></script>
+<script>
+  ensureAuth();
+  document.getElementById("logoutBtn").onclick = logout;
+  loadTasks();
+  registerSW();
+</script>
+
+</body>
+</html>

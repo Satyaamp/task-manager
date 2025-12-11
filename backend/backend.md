@@ -11,7 +11,7 @@
 ![Status](https://img.shields.io/badge/Status-Production_Ready-success)
 
 A complete **Node.js + Express backend** featuring  
-**JWT authentication**, **MongoDB integration**, and **secured task management APIs**.
+**JWT authentication**, **MongoDB integration** and **secured task management APIs**.
 
 </div>
 

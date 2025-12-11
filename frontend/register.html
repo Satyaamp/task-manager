@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register - Task Manager</title>
+  <link rel="icon" type="image/png" href="assets/icons/register.png">
+  <link rel="shortcut icon" type="image/png" href="assets/icons/register.png">
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/components.css">
+</head>
+
+<body>
+  <main class="container center-col">
+    <section class="auth-card glass">
+      <h1 class="brand">Create Account</h1>
+
+      <form id="registerForm" class="form">
+        <div class="form-row">
+          <label>Name</label>
+          <input id="name" type="text" required>
+        </div>
+
+        <div class="form-row">
+          <label>Email</label>
+          <input id="email" type="email" required>
+        </div>
+
+        <div class="form-row">
+          <label>Password</label>
+          <input id="password" type="password" required>
+        </div>
+
+        <button class="btn primary" type="submit">Register</button>
+
+        <p class="muted">Already have an account?
+          <a href="index.html">Login</a>
+        </p>
+
+        <div id="registerError" class="error" style="display:none"></div>
+      </form>
+    </section>
+  </main>
+
+  <script src="js/utils.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script>registerSW();</script>
+</body>
+</html>

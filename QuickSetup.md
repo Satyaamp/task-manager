@@ -101,19 +101,120 @@ Authorization: Bearer <JWT_TOKEN>
 
 ---
 
-⭐ This project demonstrates **clean backend architecture, authentication and security best practices**.
+ This project demonstrates **clean backend architecture, authentication and security best practices**.
 
 ---
 
-<br><br><br>
+<br>
 
-## 🔹 2. FRONTEND
 
-🚧 *Frontend implementation coming soon*
+# 🔹 2. FRONTEND
+
+
+### ✅ Prerequisites
+
+* Modern browser (Chrome recommended)
+* A local development server (Python, VS Code Live Server, or Node `serve`)
+* Backend running at:
+
+  ```
+  http://localhost:5000
+  ```
 
 ---
 
-<br><br>
+### 1️⃣ Navigate to the frontend folder
+
+```bash
+cd frontend
+```
+
+---
+
+### 2️⃣ Start the frontend server
+
+#### **Option A — Python HTTP Server**
+
+```bash
+python -m http.server 3000
+```
+
+Access in browser:
+
+```
+http://localhost:3000
+```
+
+#### **Option B — VS Code Live Server**
+
+Right-click **index.html** → **Open with Live Server**
+
+#### **Option C — Node Static Server**
+
+```bash
+npm install -g serve
+serve -s .
+```
+
+---
+
+### 3️⃣ Frontend Features
+
+* Modern **glassy UI**
+* Fully responsive using **Flexbox**
+* Login & Register pages
+* Dashboard with task analytics
+* Task CRUD (Create, Read, Update, Delete)
+* API integration via Fetch + JWT
+* Full **PWA support** (installable app)
+* Offline caching with Service Worker
+
+---
+
+### 4️⃣ Required Backend Connection
+
+Frontend communicates with:
+
+```
+http://localhost:5000/api
+```
+
+Backend **must be running first** for:
+
+* Login
+* Signup
+* Task operations
+* Dashboard stats
+
+---
+
+### 5️⃣ PWA Setup
+
+Included files:
+
+* `manifest.json`
+* `service-worker.js`
+* App icons (72px → 512px)
+
+Installable on:
+
+* Android
+* Desktop Chrome
+* Windows
+
+---
+
+### 6️⃣ Important Notes
+
+* Do **NOT** open HTML files directly (file://)
+  → PWA + Fetch API will NOT work
+* Always run using **localhost server**
+* Clear service worker cache if UI changes:
+  DevTools → Application → Service Workers → **Unregister**
+
+---
+
+<br>
 
 ## 👥 Developer
 

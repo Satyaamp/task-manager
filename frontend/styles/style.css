@@ -1,0 +1,293 @@
+/* ==============================
+   GLOBAL VARIABLES
+============================== */
+:root {
+  --bg: linear-gradient(120deg, #120a28 0%, #2d0c55 100%);
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --accent: #7c4dff; /* Purple */
+  --accent-light: #b388ff;
+  --text: rgba(255, 255, 255, 0.95);
+  --muted: rgba(255, 255, 255, 0.7);
+  --danger: #ff6b6b;
+  --card-radius: 14px;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", Arial, sans-serif;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==============================
+   CONTAINERS & LAYOUT
+============================== */
+.container {
+  max-width: 1100px;
+  margin: 32px auto;
+  padding: 16px;
+}
+
+.center-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+}
+
+/* ==============================
+   GLASS CARD STYLING
+============================== */
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(12px);
+  border-radius: var(--card-radius);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* Auth Card */
+.auth-card {
+  max-width: 450px;
+  width: 100%;
+  padding: 28px;
+}
+
+/* Branding */
+.brand {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.brand span {
+  color: var(--accent);
+}
+
+.brand-small {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* ==============================
+   FORMS
+============================== */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: var(--muted);
+}
+
+input,
+textarea,
+select {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text);
+  padding: 12px;
+  border-radius: 10px;
+  outline: none;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+textarea {
+  min-height: 90px;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* ==============================
+   BUTTONS
+============================== */
+.btn {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.25s ease-in-out;
+  color: var(--text);
+}
+
+.btn.primary {
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  color: #fff;
+}
+
+.btn.primary:hover {
+  opacity: 0.9;
+}
+
+.btn.ghost {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn.ghost:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.btn.danger {
+  background: linear-gradient(90deg, #ff5252, #ff6b6b);
+  color: #fff;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+/* ==============================
+   TOP NAVBAR
+============================== */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  margin-bottom: 20px;
+}
+
+.topbar nav {
+  display: flex;
+  gap: 12px;
+}
+
+.topbar a {
+  text-decoration: none;
+  color: var(--muted);
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.topbar a:hover {
+  color: var(--text);
+}
+
+/* ==============================
+   DASHBOARD CARDS
+============================== */
+.grid {
+  display: flex;
+  gap: 16px;
+}
+
+.three-cols {
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  flex: 1;
+  min-width: 180px;
+  padding: 24px;
+  text-align: center;
+}
+
+.stat-card p {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 6px;
+}
+
+/* ==============================
+   TASK LIST PAGE
+============================== */
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.cards-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.task-card {
+  padding: 16px;
+  min-width: 260px;
+  flex: 1;
+}
+
+/* ==============================
+   MODAL
+============================== */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal[aria-hidden="false"] {
+  display: flex;
+}
+
+.modal-content {
+  padding: 22px;
+  width: 90%;
+  max-width: 420px;
+}
+
+/* ==============================
+   ERROR DISPLAY
+============================== */
+.error {
+  background: rgba(255, 60, 60, 0.13);
+  color: #ffb4b4;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+/* ==============================
+   RESPONSIVENESS
+============================== */
+@media (max-width: 768px) {
+  .container {
+    padding: 12px;
+    margin: 12px auto;
+  }
+
+  .grid {
+    flex-direction: column;
+  }
+
+  .auth-card {
+    margin: 20px;
+  }
+}
