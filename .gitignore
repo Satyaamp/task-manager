@@ -32,11 +32,7 @@ frontend/.next/
 # Frontend node modules (if added later)
 frontend/node_modules/
 
-# Ignore screenshots/images generated during development
-screenshots/
-*.png
-*.jpg
-*.jpeg
+
 
 # Ignore PWA generated maps
 frontend/service-worker.js.map
