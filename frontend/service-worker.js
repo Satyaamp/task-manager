@@ -1,53 +1,46 @@
 /* ==============================
-   SERVICE WORKER - PWA CACHE
+   SERVICE WORKER - FIXED VERSION
+   Prevent stale JS & API issues
 ============================== */
 
-const CACHE_NAME = "task-manager-cache-v1";
-
-const FILES_TO_CACHE = [
+const CACHE_NAME = "pm-static-v2";
+const STATIC_FILES = [
+  "/",
   "index.html",
-  "register.html",
-  "dashboard.html",
-  "tasks.html",
-  "add-task.html",
-  "edit-task.html",
   "styles/style.css",
   "styles/components.css",
-  "js/utils.js",
-  "js/api.js",
-  "js/auth.js",
-  "js/tasks.js",
-  "manifest.json"
+  "manifest.json",
+  "assets/icons/login.png",
+  "assets/icons/task.png"
 ];
 
 /* ==============================
    INSTALL EVENT
 ============================== */
 self.addEventListener("install", (event) => {
-  console.log("[ServiceWorker] Install");
+  console.log("[SW] Installing...");
   event.waitUntil(
-    caches
-      .open(CACHE_NAME)
-      .then((cache) => {
-        console.log("[ServiceWorker] Pre-caching offline resources");
-        return cache.addAll(FILES_TO_CACHE);
-      })
-      .then(() => self.skipWaiting())
+    caches.open(CACHE_NAME).then((cache) => {
+      console.log("[SW] Caching static assets");
+      return cache.addAll(STATIC_FILES);
+    })
   );
+
+  self.skipWaiting();
 });
 
 /* ==============================
    ACTIVATE EVENT
 ============================== */
 self.addEventListener("activate", (event) => {
-  console.log("[ServiceWorker] Activate");
+  console.log("[SW] Activated");
 
   event.waitUntil(
-    caches.keys().then((keyList) =>
+    caches.keys().then((keys) =>
       Promise.all(
-        keyList.map((key) => {
+        keys.map((key) => {
           if (key !== CACHE_NAME) {
-            console.log("[ServiceWorker] Removing old cache", key);
+            console.log("[SW] Removing old cache:", key);
             return caches.delete(key);
           }
         })
@@ -59,17 +52,29 @@ self.addEventListener("activate", (event) => {
 });
 
 /* ==============================
-   FETCH EVENT (OFFLINE FALLBACK)
+   FETCH EVENT
 ============================== */
 self.addEventListener("fetch", (event) => {
+  const url = event.request.url;
+
+  // ⭐ IMPORTANT: Network-first for API calls
+  if (url.includes("/api/")) {
+    event.respondWith(
+      fetch(event.request).catch(() => {
+        console.warn("[SW] API offline:", url);
+        return new Response(
+          JSON.stringify({ error: "offline-api" }),
+          { status: 503, headers: { "Content-Type": "application/json" } }
+        );
+      })
+    );
+    return;
+  }
+
+  // ⭐ Cache-first for static files
   event.respondWith(
     caches.match(event.request).then((resp) => {
-      return (
-        resp ||
-        fetch(event.request).catch(() =>
-          caches.match("index.html") // fallback offline page
-        )
-      );
+      return resp || fetch(event.request);
     })
   );
 });
