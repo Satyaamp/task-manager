@@ -1,8 +1,15 @@
 /* ==============================
-   BASE URL (CHANGE IF NEEDED)
+  API BASE URL
 ============================== */
-const BASE_URL = "http://localhost:5000/api";  
-// Change this to your deployed backend URL when hosting.
+
+/**
+ * Backend API Base URL
+ * ----------------------------------------
+ * Using the live backend hosted on Render.
+ * Switch to localhost (below) for local dev.
+ */
+// const BASE_URL = "http://localhost:5000/api"; // local
+const BASE_URL = "https://productiveme-backend.onrender.com/api"; // production
 
 
 /* ==============================
