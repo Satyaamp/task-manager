@@ -1,7 +1,7 @@
 {
   "id": "task-manager-app",
-  "name": "Task Manager",
-  "short_name": "Tasks",
+  "name": "ProductiveMe",
+  "short_name": "ProductiveMe",
   "description": "A modern task manager app with glass UI and offline PWA support.",
   "start_url": "./index.html",
   "scope": "./",
