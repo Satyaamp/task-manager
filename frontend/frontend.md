@@ -1,6 +1,10 @@
+<img src="assets/screenshots/ProductiveMe.png" width="450" alt="ProductiveMe">
+
+<br>
+
 <div align="center">
 
-# Task Manager Frontend
+# Frontend
 
 ### Modern UI • Responsive • PWA Enabled
 
@@ -22,7 +26,7 @@ A complete **HTML/CSS/JavaScript frontend** featuring
 
 ### 🎯 Task Objective
 
-Build a **modern, responsive and user-friendly frontend** that connects to the Task Manager backend and provides:
+Build a **modern, responsive and user-friendly frontend** that connects to the **ProductiveMe** backend and provides:
 
 * Clean and attractive UI
 * Fully responsive layout

@@ -1,6 +1,9 @@
+![alt text](ProductiveMe.png)
 <div align="center">
 
-#  Task Manager Backend API  
+<br>
+
+# Backend API  
 ### Secure • Scalable • Production-Ready REST API
 
 ![Node.js](https://img.shields.io/badge/Node.js-18+-green?logo=node.js)

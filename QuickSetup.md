@@ -1,3 +1,7 @@
+<img src="images/ProductiveMe.png" width="450" alt="ProductiveMe">
+
+<br>
+
 # 🚀 QUICK SETUP
 
 ## 🔹 1. BACKEND

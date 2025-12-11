@@ -1,4 +1,7 @@
-#  **PRODUCTIVE ME**
+<div align="center">
+
+<!-- Promo Banner -->
+<img src="images/ProductiveMe.png" width="650" alt="ProductiveMe">
 
 ### A Modern, Productive, Full-Stack Task Manager App
 
@@ -18,6 +21,33 @@
 </div>
 
 ---
+
+# 🌐 **Live Demo**
+
+<table>
+
+### 🚀 **Try the Live App Here:**  
+## 👉 **https://productiveme.netlify.app/**  
+
+A fully responsive, installable PWA version of **Productive Me** is available on Netlify. 
+
+You can **install it on your Home Screen** just like a real app.
+
+<img src="images/pwapp.png" width="450" alt="ProductiveMe">
+
+<img src="images/desktoppwa.png" width="450" alt="ProductiveMeDesktop">
+
+<img src="images/layoutpwa.png" width="450" alt="ProductiveMe">
+
+</table>
+
+</div>
+
+
+---
+
+
+
 
 # ✨ **Overview**
 
