@@ -27,7 +27,7 @@
 <table>
 
 ### 🚀 **Try the Live App Here:**  
-## 👉 **https://productiveme.netlify.app/**  
+## 👉 **https://productivemee.netlify.app/**  
 
 A fully responsive, installable PWA version of **Productive Me** is available on Netlify. 
 
